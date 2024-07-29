@@ -15,11 +15,11 @@ datasource db {
 }
 
 
-model Todo {
+model pptmmsbackend {
   id   Int      @default(autoincrement()) @id
   task  String 
   description String?
-  status    TodoStatus 
+  status    pptmmsbackendstatus 
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   userEmail   String?    // This is used to store the email directly in Todo
@@ -29,14 +29,16 @@ model Todo {
 }
 
 model User {
-  id   Int      @default(autoincrement()) @id
-  email String    @unique
-  password  String
-  name  String
-  todos Todo[]
+  id       Int      @id @default(autoincrement())
+  email    String   @unique
+  password String
+  token    String?  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  pptmmsbackends pptmmsbackend[] 
 }
 
-enum TodoStatus{
+enum pptmmsbackendstatus {
   DONE
   ACTIVE
 }
