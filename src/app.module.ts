@@ -1,14 +1,13 @@
 import { Module } from '@nestjs/common';
 
 import { DatabaseModule } from './database/database.module';
-import { TodoModule } from './todo/todo.module';
 import { AuthModule } from './auth/auth.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PptmmsbackendModule } from './pptmmsbackend/pptmmsbackend.module';
+import { EndModule } from './end/end.module';
 
 @Module({
-  imports: [DatabaseModule, TodoModule, AuthModule, PptmmsbackendModule],
+  imports: [DatabaseModule, EndModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -9,18 +9,21 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  
   @Post('register')
-  @ApiOperation({ description:'To register a new user with email.', summary: 'Register a User with details.' })
+  @ApiOperation({
+    description: 'To register a new user with email.',
+    summary: 'Register a User with details.',
+  })
   create(@Body() registerData: RegisterUserDto) {
     return this.authService.register(registerData);
   }
 
   @Post('login')
-  @ApiOperation({ description:'Login with email.', summary: 'Endpoint to login with user email and password.' })
-  login(@Body() loginData: LoginDto){
-    return this.authService.login(loginData)
+  @ApiOperation({
+    description: 'Login with email.',
+    summary: 'Endpoint to login with user email and password.',
+  })
+  login(@Body() loginData: LoginDto) {
+    return this.authService.login(loginData);
   }
-
-  
 }
